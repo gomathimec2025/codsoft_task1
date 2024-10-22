@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+        <style>
+        * { 
+          box-sizing: border-box;
+          list-style: none;
+          
+        }
+        html{
+          scroll-behavior: smooth;
+        }
+        a {
+          text-decoration: none;
+        }
+        
+        body {
+          font-family: "Poppins", sans-serif;
+        }
+        
+        nav {
+          width: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          background-color: black;
+          z-index: 99;
+        }
+        
+        .nav__content {
+          max-width: var(--max-width);
+          margin: auto;
+          padding: 1.5rem 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        
+        nav .logo a {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: white;
+          transition: 0.3s;
+          padding-left: 40px;
+        }
+        
+        nav .logo a:hover {
+          color: aqua;
+        }
+        
+        nav .checkbox {
+          display: none;
+        }
+        
+        nav input {
+          display: none;
+        }
+        
+        nav .checkbox i {
+          font-size: 2rem;
+          color: var(--primary-color);
+          cursor: pointer;
+        }
+        
+        ul {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          list-style: none;
+          transition: left 0.3s;
+        }
+        
+        ul li a {
+          padding: 0.5rem 1rem;
+          border: 2px solid transparent;
+          text-decoration: none;
+          font-weight: 600;
+          color: var(--text-dark);
+          transition: 0.3s;
+          color: aqua;
+        }
+        
+        ul li a:hover, ul li a:active {
+          border-top-color: var(--secondary-color);
+          border-bottom-color: var(--secondary-color);
+          color: #ca8a04;
+        }
+        
+        .home {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 100vh;
+          padding: 30px 100px;
+          background-color: rgb(73, 50, 206);
+        }
+        
+        .Home__container {
+          min-height: 100vh;
+          max-width: var(--max-width);
+          margin: auto;
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 4rem;
+        }
+        
+        .subtitle {
+          letter-spacing: 2px;
+          color: white;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+        
+        .title {
+          font-size: 2.5rem;
+          font-weight: 400;
+          line-height: 3rem;
+          color: black;
+          margin-bottom: 1rem;
+        }
+        
+        .title span {
+          font-weight: 600;
+          color: #f108bf;
+        }
+        
+        .description {
+          line-height: 1.5rem;
+          color: black;
+          margin-bottom: 2rem;
+        }
+        
+        .description h2 {
+          margin-bottom: 15px;
+          color: #555;
+        }
+        
+        .action__btns {
+          display: flex;
+          gap: 1rem;
+        }
+        
+        .action__btns button {
+          font-size: 1rem;
+          font-weight: 600;
+          letter-spacing: 2px;
+          padding: 1rem 2rem;
+          outline: none;
+          border: 2px solid var(--primary-color);
+          border-radius: 10px;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+        
+        .take_on {
+          color: black;
+        }
+        
+        .take_on:hover {
+          background-color: purple;
+          color: black;
+        }
+        
+        .speak_to {
+          color: black;
+        }
+        
+        .speak_to:hover {
+          background-color: purple;
+          color: black;
+        }
+        
+        .image {
+          display: grid;
+          place-items: center;
+        }
+        
+        .image img {
+          width: min(25rem, 90%);
+          border-radius: 100%;
+        }
+        
+        @media (max-width: 750px) {
+          nav .checkbox {
+              display: block;
+          }
+        }
+        
+        .social-icons {
+          position: absolute;
+          bottom: 50px;
+        }
+        
+        .social-icons a {
+          display: inline-block;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          margin-right: 30px;
+          text-align: center;
+          line-height: 35px;
+          transition: 0.3s;
+          background: rgb(221, 130, 130);
+          border: 1px solid black;
+          outline: 2px solid black;
+        }
+        
+        .social-icons a:hover {
+          transform: translateY(-5px);
+        }
+        .social-icons a i{
+          color: blueviolet;
+        }
+        
+        .about {
+          padding: 50px 100px;
+          text-align: center;
+          background: rgb(241, 218, 222);
+        }
+        
+        .about h2 {
+          font-size: 2.5em;
+          margin-bottom: 20px;
+        }
+        
+        .about-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: 2rem;
+        }
+        
+        .about-subtitle {
+          margin-bottom: 1rem;
+          font-size: 1.5em;
+          color: #7d2ae8;
+        }
+        
+        .about-img img {
+          width: 200px;
+          border-radius: 300px;
+        }
+        
+        .about-text {
+          max-width: 600px;
+          line-height: 1.6;
+          color: #555;
+        }
+        .skills{
+          background-color: #7d2ae8;
+          text-transform: uppercase;
+          padding: 50px 0;
+        }
+        h2{
+          text-align: center;
+          color: aliceblue;
+        }
+        h3{
+          margin: 10px;
+        }
+        .skill-level{
+          width: 500px;
+          margin: 60px auto;
+          color:black;
+          padding: 20px;
+          box-shadow: 0 14px 28px rgba(0,0,0,25),0 10px rgba(0,0,0,22);
+        }
+        .skill-level li{
+          margin: 20px 0;
+          padding: 10px;
+        }
+        .skill-bar{
+          background-color: rgb(236, 246, 246);
+          display: block;
+          height: 20px;
+          border: 10x solid rgba(0,0,0,0.3);
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 1px 3px rgba(0,0,0,12),0 1px 2px rgba(0,0,0,24);
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 0.1);
+        }
+        .skill-bar :hover{
+          box-shadow: 0 14px 28px rgba(0,0,0,25),0 10px 10px rgba(0,0,0,22);
+        }
+        .skill-bar span{
+          height: 20px;
+          float: left;
+          background: linear-gradient(135deg, rgba(236,0,140,1)0%,rgba(252,103,103,1)100%);
+        }
+        .html{
+          width: 85%;
+          animation: html 3s;
+        }
+        .css{
+          width: 70%;
+          animation: css 3s;
+        }
+        .java{
+          width: 65%;
+          animation: java 3s;
+        }
+        .c{
+          width:50%;
+          animation: c 3s;
+        
+        }
+        @keyframes html {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 85%;
+          }
+        }
+        @keyframes css {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 70%;
+          }
+        }
+        @keyframes java {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 65%;
+          }
+        }
+        @keyframes c {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 50%;
+          }
+        }
+        .project{
+          padding: 50px 20px;
+          text-align: center;
+          background-color: bisque;
+        }
+        .project h2{
+          font-size: 36px;
+          margin-bottom: 40px;
+          color: #7d2ae8;
+        }
+        .project-model{
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+        .project-design{
+          background-color: bisque;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          transition: transform 0.3s;
+          width: 250px;
+        }
+        .project-design:hover{
+          transform: translateY(-10px);
+        }
+        .project-design img{
+          width: 100%;
+          height: auto;
+          border-radius: 5px;
+        }
+        .project-detail h3{
+          font-size: 18px;
+          margin: 10px 0;
+          color: #f108bf;
+        }
+        .project-detail a{
+          text-decoration: none;
+          color: #f108bf;
+          margin-top: 10px;
+          display: inline-block;
+          font-weight: bold;
+        }
+        .project-detail a:hover{
+          background-color: black;
+          color: white;
+        }
+        .resume{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 60px 20px;
+          background-color: rgb(241, 218, 222);
+        }
+        
+        .resume-info {
+          text-align: center;
+          background-color: #210c58;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
+        }
+        
+        .resume-info h2 {
+          font-size: 32px;
+          margin-bottom: 20px;
+          color: #74b9fa;
+        }
+        
+        .resume-info p {
+          font-size: 18px;
+          margin-bottom: 30px;
+          color: #75b6eb;
+        }
+        
+        .resume-details {
+          text-align: left;
+          margin-bottom: 30px;
+        }
+        
+        .resume-details ul {
+          list-style: none;
+          padding: 0;
+        }
+        
+        .resume-details li {
+          font-size: 18px;
+          color: #f0ebee;
+          margin-bottom: 10px;
+        }
+        
+        .resume-details strong {
+          color: #29bfda;
+        }
+        
+        .download-btn {
+          display: inline-block;
+          padding: 12px 25px;
+          color: #fff;
+          background-color: #7d2ae8;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 18px;
+          transition: background-color 0.3s ease;
+        }
+        
+        .download-btn:hover {
+          background-color: #0056b3;
+        }
+        .contact {
+          padding: 60px 20px;
+          background-color: rgb(241, 218, 222);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .contact-container {
+          background-color: #f9f9f9;
+          padding: 40px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          width: 100%;
+          text-align: center;
+        }
+        
+        .contact-container h2 {
+          font-size: 32px;
+          margin-bottom: 20px;
+          color: #7d2ae8;
+        }
+        
+        .contact-container p {
+          font-size: 18px;
+          margin-bottom: 30px;
+          color: #666;
+        }
+        
+        .contact-form {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .form-group {
+          margin-bottom: 20px;
+          text-align: left;
+        }
+        
+        .form-group label {
+          display: block;
+          font-size: 16px;
+          margin-bottom: 5px;
+          color: #333;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          outline: none;
+          background-color: #fff;
+          transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus {
+          border-color: #007bff;
+        }
+        
+        .send-btn {
+          padding: 12px 20px;
+          font-size: 18px;
+          color: #fff;
+          background-color: #7d2ae8;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        
+        .send-btn:hover {
+          background-color: #0056b3;
+        }
+        
+        footer {
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 20px 0;
+          font-family: Arial, sans-serif;
+        }
+        
+        .footer-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+        
+        .footer-content p {
+          margin: 0;
+          font-size: 14px;
+        }
+        
+        .footer-links {
+          margin-top: 10px;
+        }
+        
+        .footer-links a {
+          color: #fff;
+          text-decoration: none;
+          margin: 0 10px;
+          font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+          color: #ff5722;
+        }
+      </style> 
+    </head>
+    <body>
+        <header>
+            
+                <nav>
+                  <div class="nav__content">
+                    <div class="logo"><a href="#">Gomathi</a></div>
+                    <label for="check" class="checkbox">
+                      <i class="ri-menu-line"></i>
+                    </label>
+                    <input type="checkbox" name="check" id="check" />
+                    <ul>
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#skills">Skills</a></li>
+                      <li><a href="#project">Project</a></li>
+                      <li><a href="#resume">Resume</a></li>
+                       <li><a href="#contact">Contact</a></li>
+                    </ul>
+                  </div>
+                </nav>
+              </header>
+              <section class="home" id="home">
+                <div class="content">
+                  <p class="subtitle">HELLO!!!</p>
+          <h1 class="title">
+            I'm <span>Gomathi<br />a</span> Web Developer
+          </h1>
+          <p class="description">
+            <h2>"Welcome to my portfolio, showcasing my expertise in web development and design". 
+              I create  "Where code meets creativity,<br> explore my web development portfolio  online".</h2>
+          </p>
+          <div class="action__btns">
+            <button class="take_on">Take on</button>
+            <button class="speak_to">Speak to</button>
+          </div>
+        </div>
+       
+        <div class="image">
+          <img src="images.1/goma.jpg" alt="goma" />
+        </div>
+     </section>
+       <div class="social-icons">
+        <a href="http://"><i class='bx bxl-instagram-alt'></i></a>
+        <a href="http://"><i class='bx bxl-twitter'></i></a>
+        <a href="http://"><i class='bx bxl-linkedin-square'></i></a>
+        <a href="http://"><i class='bx bxl-github'></i></a>
+      </div>
+       <section class="about" id="about">
+        <h2 class="section-title">About</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="images.1/goma.jpg" alt="goma">
+            </div>
+        <h2 class="about-subtitle">I'm Gomathi</h2>
+        <h3 class="about-text">"I'm a fresher, a curious and ambitious individual with a passion for web development.
+          With a degree in MCA, I'm eager to apply my skills and knowledge to makr a positive impact.
+          My goal is to become a leading my profestional and inspire others through my work".
+        </h3>
+    </div>
+       </section>
+       <section class="skills" id="skills">
+        <h2>Skills</h2>
+         <div class="skill-level">
+          <h3>HTML</h3>
+              <div class="skill-bar" >
+                <span class="html"></span>
+              </div>
+            </div>
+            <div class="skill-level">
+              <h3>CSS</h3>
+                  <div class="skill-bar" >
+                    <span class="css"></span>
+                  </div>
+                </div>
+                <div class="skill-level">
+                  <h3>JAVA</h3>
+                      <div class="skill-bar" >
+                        <span class="java"></span>
+                      </div>
+                    </div>
+                    <div class="skill-level">
+                      <h3>C</h3>
+                          <div class="skill-bar" >
+                            <span class="c"></span>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="project" id="project">
+                        <h2>My Project</h2>
+                        <div class="project-model">
+                          <div class="project-design">
+                            <img src="images.1/game.png" alt="game">
+                            <div class="project-detail">
+                              <h3>Tik Tac Toe</h3>
+                              <p>This project is a beautiful Tic Tac Toe game.
+                                This game is made up of using HTML,CSS and Javascript.
+                                This is going to be very easy, two player game where players take turns marking a square on a 
+                                3X3 grid. The first player to get three in a row (horizontally, vertically, or diagonally) wins.
+                               </p>
+                               <a href="#">Display Project</a>
+                               </div>   
+                                </div>
+                        </div>
+                       </section>
+                       <section class="resume" id="resume">
+                        <div class="resume-info">
+                          <h2>My Resume</h2>
+                          <p>Hi! I'm a creative developer with skills in web development. this is my resume to learn about myself.</p>
+                          <div class="resume-details">
+                            <ul>
+                              <li><strong>Name:</strong>Gomathi</li>
+                              <li><strong>Skills:</strong>HTML,CSS,Java,C</li>
+                            </ul>
+                           </div>
+                           <a href="images.1/updated resume.pdf" download class="download-btn">Download Resume</a>  
+                        </div>
+
+                       </section>
+                       <footer>
+                        <div class="footer-container">
+                            <div class="footer-content">
+                                <p>© 2024 Gomathi. All Rights Reserved.</p>
+                                <div class="footer-links">
+                                    <a href="https://www.linkedin.com/in/gomathi-murugavel-6314232a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+                                    <a href="https://github.com/gomathimec2025/gomathimec2025.git" target="_blank">GitHub</a>
+                                    <a href="mailto:gomathimurugavel73@gmail.com">Email</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+              
+    </body>
+</html>
